@@ -1,33 +1,41 @@
 #include "leetcode_solutions.h"
 
-class Solution{
+class Solution {
 public:
-    ListNode* rotateRight(ListNode * head, int k){
+    ListNode* deleteDuplicates(ListNode* head) {
         if(head == NULL) return head;
-        ListNode *res(NULL), *pNode(head);
-        vector<ListNode *> pNodes;
-        size_t listSize = 0;
-        while(pNode != NULL){
-            ++listSize;
-            pNodes.push_back(pNode);
-            pNode = pNode->next;
-        }
-        int nMove = k % pNodes.size();
-        if(nMove == 0) return head;
-        int idxNewHead = pNodes.size() - nMove;
-        res = pNodes[idxNewHead];
-        pNodes[idxNewHead - 1]->next = NULL;
-        pNodes[pNodes.size() - 1]->next = pNodes[0];
-        return res;
+        ListNode *pBefore(NULL), *pCurrent(head), *res(head);
+        while(pCurrent != NULL){
 
+            ListNode *p = pCurrent;
+            while(p->next != NULL && p->val == p->next->val){
+                p = p->next;
+            }
+            if(p != pCurrent){
+                if(pCurrent == res){
+                    res = p->next;
+                    pBefore = NULL;
+                    pCurrent = p->next;
+                }else{
+                    pBefore->next = p->next;
+                    pCurrent = p->next;
+                }
+            }else{
+                pBefore = pCurrent;
+                pCurrent = pCurrent->next;
+            }
+
+        }
+
+        return res;
     }
 };
 
 
 int main(){
     Solution s;
-    ListNode *head =  CreateList({1,2,3,4,5});
-    ListNode *res = s.rotateRight(head, 2);
+    ListNode *head =  CreateList({1,1,2,2,4,5,5,5,6,7,7,7});
+    ListNode *res = s.deleteDuplicates(head);
     cout << *res << endl;
     return 0;
 }
