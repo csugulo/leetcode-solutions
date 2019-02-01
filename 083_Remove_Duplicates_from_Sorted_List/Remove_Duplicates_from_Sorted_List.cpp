@@ -27,6 +27,6 @@ public:
 
 int main(){
     Solution s;
-    ListNode *head = CreateList({1,1,2,3,3});
+    ListNode *head = CreateList({1,1,2,2,3,3});
     cout << *s.deleteDuplicates(head);
 }

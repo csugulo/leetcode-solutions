@@ -59,7 +59,7 @@ struct TreeNode{
 };
 
 // empty tree node
-#define ETN -2147483648
+#define ETN int(-2147483648)
 
 inline TreeNode * CreateTree(initializer_list<int> list){
     if(list.size() == 0) return NULL;
@@ -80,8 +80,38 @@ inline TreeNode * CreateTree(initializer_list<int> list){
     return nodes[0];
 }
 
+inline int maxDepthOfTree(const TreeNode & root) {
+	if (&root == NULL) return 0;
+	else {
+		int lDepth = maxDepthOfTree(*root.left);
+		int rDepth = maxDepthOfTree(*root.right);
+		return lDepth > rDepth ? lDepth + 1 : rDepth + 1;
+	}
+}
+
 inline ostream & operator<<(ostream & os, const TreeNode & root){
-    // TODO implement print Tree
+	int depth = maxDepthOfTree(root);
+	if (depth == 0) return os;
+	vector<const TreeNode *> treeVec;
+	treeVec.resize(pow(2,depth) - 1);
+	treeVec[0] = &root;
+	for (size_t i = 0; i < depth - 1; ++i) {
+		for (size_t j = pow(2, i) - 1; j < pow(2, i + 1) - 1; ++j) {
+			if (treeVec[j] != NULL) {
+				treeVec[2 * j + 1] = treeVec[j]->left;
+				treeVec[2 * j + 2] = treeVec[j]->right;
+			}
+		}
+	}
+
+	for (size_t i = 0; i < depth; ++i) {
+		for (size_t j = pow(2, i) - 1; j < pow(2, i + 1) - 1; ++j) {
+			if (treeVec[j] != NULL) os << treeVec[j]->val << '\t';
+			else os << "null\t";
+		}
+		os << endl;
+	}
+	
     return os;
 }
 #endif //LEETCODE_SOLUTIONS_LEETCODE_SOLUTIONS_H

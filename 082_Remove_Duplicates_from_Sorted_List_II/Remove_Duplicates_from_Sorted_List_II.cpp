@@ -34,7 +34,7 @@ public:
 
 int main(){
     Solution s;
-    ListNode *head =  CreateList({1,1,2,2,4,5,5,5,6,7,7,7});
+    ListNode *head =  CreateList({1,1,2,2,4,4,5,5,5,6,6,7,7,7});
     ListNode *res = s.deleteDuplicates(head);
     cout << *res << endl;
     return 0;
