@@ -114,4 +114,10 @@ inline ostream & operator<<(ostream & os, const TreeNode & root){
 	
     return os;
 }
+
+struct RandomListNode {
+	int label;
+	RandomListNode *next, *random;
+	RandomListNode(int x) : label(x), next(NULL), random(NULL) {}
+};
 #endif //LEETCODE_SOLUTIONS_LEETCODE_SOLUTIONS_H
