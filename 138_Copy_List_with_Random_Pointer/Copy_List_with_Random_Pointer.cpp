@@ -5,13 +5,11 @@ public:
 	RandomListNode *copyRandomList(RandomListNode *head) {
 		if (head == NULL) return NULL;
 		map<RandomListNode *, RandomListNode *> copyMap;
-		map<RandomListNode *, RandomListNode *> randomMap;
 		RandomListNode *p = head;
 		RandomListNode *res = new RandomListNode(0) , *last(res);
 		while (p) {
 			RandomListNode *pNode = new RandomListNode(p->label);
 			copyMap[p] = pNode;
-			if (p->random) randomMap[p] = p->random;
 			last->next = pNode;
 			last = pNode;
 			p = p->next;
@@ -19,7 +17,7 @@ public:
 
 		p = head;
 		while (p) {
-			if (p->random) copyMap[p]->random = copyMap[randomMap[p]];
+			if (p->random) copyMap[p]->random = copyMap[p->random];
 			p = p->next;
 		}
 
