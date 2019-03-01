@@ -36,6 +36,11 @@ inline ostream & operator<<(ostream & os, const ListNode & head){
     return os;
 }
 
+inline ostream & operator<<(ostream & os, const ListNode * head) {
+	os << *(head);
+	return os;
+}
+
 inline ListNode * CreateList(initializer_list<int> list){
     ListNode *pHead(NULL), *pLast(NULL);
     for(auto it = list.begin(); it != list.end(); ++it){
@@ -114,6 +119,11 @@ inline ostream & operator<<(ostream & os, const TreeNode & root){
 	}
 	
     return os;
+}
+
+inline ostream & operator<<(ostream & os, const TreeNode * root) {
+	os << *(root);
+	return os;
 }
 
 struct RandomListNode {
