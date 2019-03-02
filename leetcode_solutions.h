@@ -131,4 +131,17 @@ struct RandomListNode {
 	RandomListNode *next, *random;
 	RandomListNode(int x) : label(x), next(NULL), random(NULL) {}
 };
+
+
+template <typename T>
+inline ostream & operator<<(ostream & os, const vector<T> vec) {
+	os << '[';
+	for (auto i = 0; i < vec.size(); ++i) {
+		if (i != 0) os << ',';
+		os << vec[i];
+	}
+	os << ']';
+	return os;
+}
+
 #endif //LEETCODE_SOLUTIONS_LEETCODE_SOLUTIONS_H

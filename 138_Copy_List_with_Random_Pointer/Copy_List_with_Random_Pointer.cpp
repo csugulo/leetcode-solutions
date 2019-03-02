@@ -3,8 +3,7 @@
 class Solution {
 public:
 	RandomListNode *copyRandomList(RandomListNode *head) {
-		if (head == NULL) return NULL;
-		map<RandomListNode *, RandomListNode *> copyMap;
+		unordered_map<RandomListNode *, RandomListNode *> copyMap;
 		RandomListNode *p = head;
 		RandomListNode *res = new RandomListNode(0) , *last(res);
 		while (p) {
@@ -30,7 +29,7 @@ int main() {
 	n0.next = &n1; n1.next = &n2; n2.next = &n3;
 	n0.random = &n1; n2.random = &n3;
 	Solution s;
-	RandomListNode * copy = s.copyRandomList(&n0);
+	RandomListNode * copy = s.copyRandomList(NULL);
 	cout << copy << endl;
 	cout << 1;
 }
