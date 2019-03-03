@@ -8,11 +8,11 @@ public:
 		for (auto it = strs.begin(); it != strs.end(); ++it) {
 			string str = *it;
 			sort(str.begin(), str.end());
-			map[str].push_back(std::move(*it));
+			map[str].push_back(move(*it));
 		}
 
 		for (auto it = map.begin(); it != map.end(); ++it)
-			res.push_back(std::move((*it).second));
+			res.push_back(move((*it).second));
 
 		return res;
 	}
