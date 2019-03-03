@@ -21,7 +21,16 @@ public:
 
 int main() {
 	Solution s;
-	vector<vector<int>> matrix = { {1,2,3},{4,5,6},{7,8,9} };
+	size_t n = 10000;
+	int val = 0;
+	vector<vector<int>> matrix;
+	for (size_t i = 0; i < n; ++i) {
+		vector<int> row;
+		for (size_t j = 0; j < n; ++j)
+			row.push_back(val++);
+		matrix.push_back(row);
+	}
 	s.rotate(matrix);
-	cout<<matrix;
+	//cout<<matrix;
+	return 0;
 }
