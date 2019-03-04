@@ -3,18 +3,18 @@
 class Solution {
 public:
 	vector<Interval> merge(vector<Interval>& intervals) {
-		sort(intervals.begin(), intervals.end(), 
+		sort(intervals.begin(), intervals.end(),
 			[](const Interval & i1, const Interval & i2) {
-				return i1.start < i2.start;
-			});
+			return i1.start < i2.start;
+		});
 		vector<Interval> res;
 		for (auto it = intervals.begin(); it != intervals.end(); ++it) {
-			if (res.size() == 0) res.push_back(move(*it));
+			if (res.size() == 0) res.emplace_back(move(*it));
 			else {
 				if ((*it).start <= res.back().end)
 					res.back().end = max((*it).end, res.back().end);
 				else
-					res.push_back(move(*it));
+					res.emplace_back(move(*it));
 			}
 		}
 		return res;
