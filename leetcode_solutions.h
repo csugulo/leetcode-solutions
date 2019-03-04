@@ -133,6 +133,20 @@ struct RandomListNode {
 	RandomListNode(int x) : label(x), next(NULL), random(NULL) {}
 };
 
+struct Interval {
+	int start;
+	int end;
+	Interval() : start(0), end(0) {}
+	Interval(int s, int e) : start(s), end(e) {}
+};
+
+inline ostream & operator<<(ostream & os, const Interval & interval) {
+	os << '[';
+	os << interval.start << ',' << interval.end;
+	os << ']';
+	return os;
+}
+
 
 template <typename T>
 inline ostream & operator<<(ostream & os, const vector<T> vec) {
