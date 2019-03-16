@@ -4,7 +4,7 @@ class Solution {
 public:
 
 	bool dfs(vector<vector<char>> & board, vector<vector<bool>> & unuseMap,
-		string word, int begin, int i, int j) {
+		string & word, int begin, int i, int j) {
 		if (begin == word.size()) return true;
 		int rows(board.size()), cols(board[0].size());
 		
