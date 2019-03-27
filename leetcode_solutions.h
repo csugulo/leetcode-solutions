@@ -16,6 +16,8 @@
 #include <deque>
 #include <map>
 #include <set>
+#include <cmath>
+#include <climits>
 
 using namespace std;
 
