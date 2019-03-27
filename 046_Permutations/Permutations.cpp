@@ -38,6 +38,7 @@ public:
 
 int main() {
 	Solution s;
-	cout << s.permute(vector<int>({1,2,3}));
+	vector<int> nums = {1,2,3};
+	cout << s.permute(nums);
 	return 0;
 }
