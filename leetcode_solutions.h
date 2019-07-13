@@ -89,17 +89,17 @@ inline TreeNode * CreateTree(initializer_list<int> list){
     return nodes[0];
 }
 
-inline int maxDepthOfTree(const TreeNode & root) {
-	if (&root == NULL) return 0;
+inline int maxDepthOfTree(const TreeNode * root) {
+	if (root == NULL) return 0;
 	else {
-		int lDepth = maxDepthOfTree(*root.left);
-		int rDepth = maxDepthOfTree(*root.right);
+		int lDepth = maxDepthOfTree(root->left);
+		int rDepth = maxDepthOfTree(root->right);
 		return lDepth > rDepth ? lDepth + 1 : rDepth + 1;
 	}
 }
 
 inline ostream & operator<<(ostream & os, const TreeNode & root){
-	int depth = maxDepthOfTree(root);
+	int depth = maxDepthOfTree(&root);
 	if (depth == 0) return os;
 	vector<const TreeNode *> treeVec;
 	treeVec.resize(pow(2,depth) - 1);
