@@ -14,6 +14,7 @@
 #include <unordered_set>
 #include <stack>
 #include <deque>
+#include <list>
 #include <map>
 #include <set>
 #include <cmath>
@@ -158,6 +159,33 @@ inline ostream & operator<<(ostream & os, const vector<T> vec) {
 		os << vec[i];
 	}
 	os << ']';
+	return os;
+}
+
+template <typename T, typename U>
+inline ostream & operator<<(ostream & os, const std::pair<T, U> pair){
+	os << '(' << pair.first << ',' << pair.second << ')';
+}
+
+template <typename T>
+inline ostream & operator<<(ostream & os, const list<T> list) {
+	os << '[';
+	for(auto it = list.begin(); it != list.end(); ++it){
+		if (it != list.begin()) os << ',';
+		os << *it;
+	}
+	os << ']';
+	return os;
+}
+
+template <typename T, typename U>
+inline ostream & operator<<(ostream & os, const std::map<T, U> map){
+	os << '(';
+	for (auto it = map.begin(); it != map.end(); ++it){
+		if (it != map.begin()) os << ',';
+		os << it->first << ':' << it->second;
+	}
+	os << ')';
 	return os;
 }
 
