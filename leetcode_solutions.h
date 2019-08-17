@@ -18,7 +18,7 @@
 #include <map>
 #include <set>
 #include <cmath>
-#include <climits>
+#include <limits>
 
 using namespace std;
 
