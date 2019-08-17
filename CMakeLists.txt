@@ -5,8 +5,9 @@ PROJECT(LEETCODE-SOLUTIONS)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0 -ggdb -fsanitize=address")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror -O0 -ggdb -fsanitize=address")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror -O0 -ggdb -fsanitize=address")
+set(CMAKE_LD_FLAGS "${CMAKE_LD_FLAGS} -fsanitize=address")
 
 set(CMAKE_BUILD_TYPE Debug)
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
