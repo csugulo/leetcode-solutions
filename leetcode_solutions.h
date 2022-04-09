@@ -165,6 +165,7 @@ inline ostream & operator<<(ostream & os, const vector<T> vec) {
 template <typename T, typename U>
 inline ostream & operator<<(ostream & os, const std::pair<T, U> pair){
 	os << '(' << pair.first << ',' << pair.second << ')';
+	return os;
 }
 
 template <typename T>
